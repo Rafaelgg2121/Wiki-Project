@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "adde358a-792d-4254-babb-26a3d9d8c113",
+		"name": "Pets",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FindbyStatus",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"status\");",
+							"});",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}pet/findByStatus?status=sold",
+					"host": [
+						"{{base_url}}pet"
+					],
+					"path": [
+						"findByStatus"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "sold"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}pet/926295",
+					"host": [
+						"{{base_url}}pet"
+					],
+					"path": [
+						"926295"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete ",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/957888",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"957888"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

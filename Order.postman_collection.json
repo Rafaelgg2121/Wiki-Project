@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "86699934-2a6f-44b6-8ba1-843d037766df",
+		"name": "Order",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Order a Pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 55,\n  \"petId\": 954260,\n  \"quantity\": 1,\n  \"shipDate\": \"2022-02-22T23:53:39.791Z\",\n  \"status\": \"placed\",\n  \"complete\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrderByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.get(\"id\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}store/order/66",
+					"host": [
+						"{{base_url}}store"
+					],
+					"path": [
+						"order",
+						"66"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
